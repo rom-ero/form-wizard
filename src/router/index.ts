@@ -1,19 +1,43 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+
+import Stepper from '@/components/Stepper.vue'
+import Membership from '@/components/Membership.vue'
+import Overview from '@/components/Overview.vue'
+import PersonalInfo from '@/components/PersonalInfo.vue'
 
 const routes: Array<RouteRecordRaw> = [
+
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: '/form/personalinfo',
+    name: 'PersonalInfo',
+    props: { default: true, Stepper: { selectedIndex: 0 } },
+    components: {
+      default: PersonalInfo,
+      Stepper: Stepper
+    }
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/form/membership',
+    name: 'Membership',
+    props: { default: true, Stepper: { selectedIndex: 1 } },
+    components: {
+      default: Membership,
+      Stepper: Stepper
+    }
+  },
+  {
+    path: '/form/overview',
+    name: 'Overview',
+    props: { default: true, Stepper: { selectedIndex: 2 } },
+    components: {
+      default: Overview,
+      Stepper: Stepper
+    }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'Home',
+    redirect: { name: 'PersonalInfo' }
   }
 ]
 

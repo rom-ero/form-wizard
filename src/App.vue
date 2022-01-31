@@ -1,30 +1,64 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="page-wrapper">
+    <router-view name="Stepper"></router-view>
+    <router-view />
   </div>
-  <router-view/>
 </template>
 
 <style lang="scss">
+html {
+  background-color: $page-background-color;
+  width: 100%;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif;
+  color: $text-color;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  padding-top: $app-padding-top;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.label {
+  text-align: left;
+  font: normal normal bold 18px/48px $font_family;
+  letter-spacing: 0px;
+}
+.form-button {
+  background: $button-background-color;
+  border: 2px solid $gray-color;
+  border-radius: 8px;
+  padding: 0px 18px;
+  font: normal normal bold 18px/24px $font_family;
+  cursor: pointer;
+  color: $text-color;
 }
 
-#nav {
-  padding: 30px;
+.form-button:active {
+  background: $blue-color !important;
+  color: #ffffff;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.form-button:hover {
+  background: $button-background-color-hover;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.link-button {
+  display: inline-block;
+  padding: 6px 0px;
+  font: normal normal bold 18px/24px $font_family;
+  color: $blue-color;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  text-decoration: underline;
 }
 </style>
